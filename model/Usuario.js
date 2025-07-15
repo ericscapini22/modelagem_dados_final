@@ -47,7 +47,8 @@ const Usuario = db.define('usuario', {
         allowNull: false
     }
 },{
-    timestamps: false
+    timestamps: false,
+    tableName: 'usuarios'
 })
 
 module.exports = Usuario
