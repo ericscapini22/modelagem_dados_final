@@ -39,7 +39,19 @@ const listarPorId = async (req,res)=>{
 }
 
 const listarPorNome = async (req,res)=>{
-    //Em desenvolvimento, disponível em patches futuros!
+    const nome = req.params.nome
+    try {
+        const valores = await Usuario.findOne({where: { nome: nome }})
+        if (valores === null) {
+            res.status(404).json({ message: "Produto não encontrado!" })
+        } else {
+            res.status(200).json(valores)
+            console.log('Produto encontrado com sucesso!')
+        }
+    } catch (err) {
+        console.error('Erro ao buscar produto por nome!', err)
+        res.status(500).json({ message: "Erro ao buscar produto por nome!" })
+    }
 }
 
 const atualizar = async (req,res)=>{
@@ -52,7 +64,7 @@ const atualizar = async (req,res)=>{
             res.status(404).json({message: "Falha ao tentar encontrar usuário!"})
         } else {
             await Usuario.update(dados, {where: {id : id}})
-            const valoresAtual = await Cliente.findByPk(id)
+            const valoresAtual = await Usuario.findByPk(id)
             res.status(200).json(valoresAtual)
             console.log('Dados do usuário atualizados com sucesso!')
         }
@@ -80,4 +92,4 @@ const apagar = async (req,res)=>{
     }
 }
 
-module.exports = { cadastrar, listar, listarPorId, atualizar, apagar }
+module.exports = { cadastrar, listar, listarPorId, listarPorNome, atualizar, apagar }

@@ -24,6 +24,7 @@ app.use(cors())
 app.post('/usuario', usuarioController.cadastrar)
 app.get('/usuario', usuarioController.listar)
 app.get('/usuario/:id', usuarioController.listarPorId)
+app.get('/usuario/:nome', usuarioController.listarPorNome)
 app.put('/usuario/:id', usuarioController.atualizar)
 app.delete('/usuario/:id', usuarioController.apagar)
 
@@ -32,6 +33,7 @@ app.delete('/usuario/:id', usuarioController.apagar)
 app.post('/produto', produtoController.cadastrar)
 app.get('/produto', produtoController.listar)
 app.get('/produto/:id', produtoController.listarPorId)
+app.get('/produto/:nome', produtoController.listarPorNome)
 app.put('/produto/:id', produtoController.atualizar)
 app.delete('/produto/:id', produtoController.apagar)
 
@@ -50,7 +52,7 @@ app.get('/', (req,res)=>{
 
 conn.sync()
 .then(()=>{
-    app.listen(process.env.PORT, process.env.DB_HOST, ()=>{
+    app.listen(PORT, hostname, ()=>{
         console.log(`Servidor rodando em http://${hostname}:${PORT}`)
     })
 })
