@@ -41,7 +41,7 @@ const listarPorId = async (req,res)=>{
 const listarPorNome = async (req,res)=>{
     const nome = req.params.nome
     try {
-        const valores = await Produto.findOne({where: { nome: nome }})
+        const valores = await Produto.findOne({where: { nm_produto: nome }})
         if (valores === null) {
             res.status(404).json({ message: "Produto não encontrado!" })
         } else {

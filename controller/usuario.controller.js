@@ -41,12 +41,12 @@ const listarPorId = async (req,res)=>{
 const listarPorNome = async (req,res)=>{
     const nome = req.params.nome
     try {
-        const valores = await Usuario.findOne({where: { nome: nome }})
+        const valores = await Usuario.findOne({where: { nm_usuario: nome }})
         if (valores === null) {
-            res.status(404).json({ message: "Produto não encontrado!" })
+            res.status(404).json({ message: "Usuário não encontrado!" })
         } else {
             res.status(200).json(valores)
-            console.log('Produto encontrado com sucesso!')
+            console.log('Usuário encontrado com sucesso!')
         }
     } catch (err) {
         console.error('Erro ao buscar produto por nome!', err)
