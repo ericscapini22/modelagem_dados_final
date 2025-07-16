@@ -54,7 +54,7 @@ const atualizar = async (req,res)=>{
             await Usuario.update(dados, {where: {id : id}})
             const valoresAtual = await Cliente.findByPk(id)
             res.status(200).json(valoresAtual)
-            console.log('Dados do usuário atualizado com sucesso!')
+            console.log('Dados do usuário atualizados com sucesso!')
         }
     } catch (err) {
         console.error('Falha ao atualizar dados do usuário!',err)
