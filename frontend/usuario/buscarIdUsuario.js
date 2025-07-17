@@ -2,27 +2,29 @@ let btnBuscar = document.getElementById('btnBuscar')
 let res = document.getElementById('res')
 
 btnBuscar.addEventListener('click', () => {
-    let id_produto = Number(document.getElementById('id_produto').value)
+    let id_usuario = Number(document.getElementById('id_usuario').value)
 
-    fetch('http://localhost:3000/produto/' + id_produto)
+    fetch('http://localhost:3000/usuario/' + id_usuario)
         .then(response => response.json())
         .then(valores => {
-            if(valores.id_produto) {
-                res.innerHTML = "nm_produto: "+valores.nm_produto + '<br>'
-                res.innerHTML += "descricao: "+valores.descricao + '<br>'
-                res.innerHTML += "categoria: "+valores.categoria + '<br>'
-                res.innerHTML += "preco: "+valores.preco + '<br>'
-                res.innerHTML += "porcentagemDesconto: "+valores.porcentagemDesconto + '<br>'
-                res.innerHTML += "estoque: "+valores.estoque + '<br>'
-                res.innerHTML += "marca: "+valores.marca + '<br>'
-                res.innerHTML += "ft_produto: "+valores.ft_produto + '<br>'
+            if(valores.id_usuario) {
+                res.innerHTML = "Nome: "+valores.nm_usuario + '<br>'
+                res.innerHTML += "Sobrenome: "+valores.sobrenome + '<br>'
+                res.innerHTML += "Idade: "+valores.idade + '<br>'
+                res.innerHTML += "Email: "+valores.email + '<br>'
+                res.innerHTML += "Telefone: "+valores.telefone + '<br>'
+                res.innerHTML += "Endereço: "+valores.endereco + '<br>'
+                res.innerHTML += "Cidade: "+valores.cidade + '<br>'
+                res.innerHTML += "Estado: "+valores.estado + '<br>'
+                res.innerHTML += "Data do Nascimento: "+valores.dataNascimento + '<br>'
             } else {
-                res.innerHTML = "dados não encontrados"
+                res.innerHTML = "Usuário não encontrados!"
             }
 
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao Apagar'
+            console.error('Erro ao listar Usuário!')
+            res.innerHTML = 'Erro ao listar Usuário!'
         })
 })
+

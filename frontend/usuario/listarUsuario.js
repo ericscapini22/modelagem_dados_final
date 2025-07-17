@@ -3,24 +3,24 @@ let res = document.getElementById('res')
 
 btnListar.addEventListener('click', () => {
 
-    fetch('http://localhost:3000/produto/')
+    fetch('http://localhost:3000/usuario/')
         .then(response => response.json())
         .then(valores => {
             res.innerHTML = ''
             for(let i = 0; i < valores.length; i++) {
-                res.innerHTML += "<b>id: "+valores[i].id_produto + '</b><br>'
-                res.innerHTML += "<b>nm_produto: "+valores[i].nm_produto + '</b><br>'
-                res.innerHTML += "descricao: "+valores[i].descricao + '<br>'
-                res.innerHTML += "categoria: "+valores[i].categoria + '<br>'
-                res.innerHTML += "preco: "+valores[i].preco + '<br>'
-                res.innerHTML += "porcentagemDesconto: "+valores[i].porcentagemDesconto + '<br>'
-                res.innerHTML += "estoque: "+valores[i].estoque + '<br>'
-                res.innerHTML += "marca: "+valores[i].marca + '<br>'
-                res.innerHTML += "ft_produto: "+valores[i].ft_produto + '<br>'
+                res.innerHTML += "<br>Nome: "+valores[i].nm_usuario + '<br>'
+                res.innerHTML += "Sobrenome: "+valores[i].sobrenome + '<br>'
+                res.innerHTML += "Idade: "+valores[i].idade + '<br>'
+                res.innerHTML += "Email: "+valores[i].email + '<br>'
+                res.innerHTML += "Telefone: "+valores[i].telefone + '<br>'
+                res.innerHTML += "Endereço: "+valores[i].endereco + '<br>'
+                res.innerHTML += "Cidade: "+valores[i].cidade + '<br>'
+                res.innerHTML += "Estado: "+valores[i].estado + '<br>'
+                res.innerHTML += "Data do Nascimento: "+valores[i].dataNascimento + '<br><br><hr>'
             }
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao listar'
+            console.error('Erro ao listar o Usuário!')
+            res.innerHTML = 'Erro ao listar o Usuário!'
         })
 })

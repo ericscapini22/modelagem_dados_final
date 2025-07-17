@@ -15,7 +15,7 @@ btnApagar.addEventListener('click', () => {
             res.innerHTML = valores.message
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao Apagar'
+            console.error('Erro ao apagar dados do Usuário!')
+            res.innerHTML = 'Erro ao apagar dados do Usuário!'
         })
 })

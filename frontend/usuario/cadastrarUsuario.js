@@ -2,27 +2,29 @@ let btnCadastrar = document.getElementById('btnCadastrar')
 let res = document.getElementById('res')
 
 btnCadastrar.addEventListener('click', () => {
-    let nm_produto = document.getElementById('nm_produto').value
-    let descricao = document.getElementById('descricao').value
-    let categoria = document.getElementById('categoria').value
-    let preco = Number(document.getElementById('preco').value)
-    let porcentagemDesconto = Number(document.getElementById('porcentagemDesconto').value)
-    let estoque = Number(document.getElementById('estoque').value)
-    let marca = document.getElementById('marca').value
-    let ft_produto = document.getElementById('ft_produto').value
+    let nm_usuario = document.getElementById('nm_usuario').value
+    let sobrenome = document.getElementById('sobrenome').value
+    let idade = Number(document.getElementById('idade').value)
+    let email = document.getElementById('email').value
+    let telefone = document.getElementById('telefone').value
+    let endereco = document.getElementById('endereco').value
+    let cidade = document.getElementById('cidade').value
+    let estado = document.getElementById('estado').value
+    let dataNascimento = document.getElementById('dataNascimento').value
 
     const dados = {
-        nm_produto,
-        descricao,
-        categoria,
-        preco,
-        porcentagemDesconto,
-        estoque,
-        marca,
-        ft_produto
+        nm_usuario,
+        sobrenome,
+        idade,
+        email,
+        telefone,
+        endereco,
+        cidade,
+        estado,
+        dataNascimento
     }
 
-    fetch('http://localhost:3000/produto', {
+    fetch('http://localhost:3000/usuario', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -31,17 +33,18 @@ btnCadastrar.addEventListener('click', () => {
     })
         .then(response => response.json())
         .then(valores => {
-            res.innerHTML = "nm_produto: "+valores.nm_produto + '<br>'
-            res.innerHTML += "descricao: "+valores.descricao + '<br>'
-            res.innerHTML += "categoria: "+valores.categoria + '<br>'
-            res.innerHTML += "preco: "+valores.preco + '<br>'
-            res.innerHTML += "porcentagemDesconto: "+valores.porcentagemDesconto + '<br>'
-            res.innerHTML += "estoque: "+valores.estoque + '<br>'
-            res.innerHTML += "marca: "+valores.marca + '<br>'
-            res.innerHTML += "ft_produto: "+valores.ft_produto + '<br>'
+            res.innerHTML = "Nome: "+valores.nm_usuario + '<br>'
+            res.innerHTML += "Sobrenome: "+valores.sobrenome + '<br>'
+            res.innerHTML += "Idade: "+valores.idade + '<br>'
+            res.innerHTML += "Email: "+valores.email + '<br>'
+            res.innerHTML += "Telefone: "+valores.telefone + '<br>'
+            res.innerHTML += "Endereço: "+valores.endereco + '<br>'
+            res.innerHTML += "Cidade: "+valores.cidade + '<br>'
+            res.innerHTML += "Estado: "+valores.estado + '<br>'
+            res.innerHTML += "Data do Nascimento: "+valores.dataNascimento + '<br>'
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao cadastrarr'
+            console.error('Erro ao cadastrar Usuário!')
+            res.innerHTML = 'Erro ao cadastrar Usuário!'
         })
 })

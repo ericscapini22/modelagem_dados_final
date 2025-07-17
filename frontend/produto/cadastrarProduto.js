@@ -41,7 +41,7 @@ btnCadastrar.addEventListener('click', () => {
             res.innerHTML += "ft_produto: "+valores.ft_produto + '<br>'
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao cadastrarr'
+            console.error('Erro ao cadastrar Usuário!')
+            res.innerHTML = 'Erro ao cadastrar Usuário!'
         })
 })
