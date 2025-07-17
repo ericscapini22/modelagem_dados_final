@@ -1,4 +1,5 @@
 const Usuario = require('../model/Usuario')
+const sequelize = require('sequelize')
 
 const cadastrar = async (req,res)=>{
     const dados = req.body
@@ -40,8 +41,16 @@ const listarPorId = async (req,res)=>{
 
 const listarPorNome = async (req,res)=>{
     const nome = req.params.nome
+    //Op.Like = Filtro de String avançado, % ele avisa que pode ter caracteres a mais ou não
     try {
-        const valores = await Usuario.findOne({where: { nm_usuario: nome }})
+        const valores = await Usuario.findAll({
+            where: {
+                nm_usuario: {
+                    [sequelize.Op.like]: `%${nome}%`
+                }
+            }
+        })
+
         if (valores === null) {
             res.status(404).json({ message: "Usuário não encontrado!" })
         } else {
@@ -82,7 +91,7 @@ const apagar = async (req,res)=>{
             console.error('Falha ao tentar encontrar o usuário!',err)
             res.status(404).json({message: "Falha ao tentar encontrar usuário!"})
         } else {
-            await Usuario.destroy({where: {id : id}})
+            await Usuario.destroy({where: {id_usuario : id}})
             console.log('Dados do usuário apagados com sucesso!')
             res.status(200).json({message: "Dados do usuário apagados com sucesso!"})
         }

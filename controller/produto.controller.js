@@ -1,4 +1,5 @@
 const Produto = require('../model/Produto')
+const sequelize = require('sequelize')
 
 const cadastrar = async (req,res)=>{
     const dados = req.body
@@ -41,7 +42,13 @@ const listarPorId = async (req,res)=>{
 const listarPorNome = async (req,res)=>{
     const nome = req.params.nome
     try {
-        const valores = await Produto.findOne({where: { nm_produto: nome }})
+        const valores = await Produto.findAll({
+            where: {
+                nm_produto: {
+                    [sequelize.Op.like]: `%${nome}%`
+                }
+            }
+        })
         if (valores === null) {
             res.status(404).json({ message: "Produto não encontrado!" })
         } else {
@@ -63,7 +70,7 @@ const atualizar = async (req,res)=>{
             console.error('Falha ao tentar encontrar o produto!',err)
             res.status(404).json({message: "Falha ao tentar encontrar produto!"})
         } else {
-            await Produto.update(dados, {where: {id : id}})
+            await Produto.update(dados, {where: {id_produto : id}})
             const valoresAtual = await Produto.findByPk(id)
             res.status(200).json(valoresAtual)
             console.log('Dados do produto atualizados com sucesso!')
@@ -82,7 +89,7 @@ const apagar = async (req,res)=>{
             console.error('Falha ao tentar encontrar o produto!',err)
             res.status(404).json({message: "Falha ao tentar encontrar produto!"})
         } else {
-            await Produto.destroy({where: {id : id}})
+            await Produto.destroy({where: {id_produto : id}})
             console.log('Produto apagados com sucesso!')
             res.status(200).json({message: "Produto apagados com sucesso!"})
         }

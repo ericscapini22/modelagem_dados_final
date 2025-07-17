@@ -4,7 +4,7 @@ const cadastrar = async (req,res)=>{
     const dados = req.body
     try {
         const valores = await Compra.create(dados)
-        res.status(200).json(valores)
+        res.status(201).json(valores)
     } catch (err) {
         console.error('Erro ao cadastrar a compra!',err)
         res.status(500).json({message: "Erro ao cadastrar a compra!"})
@@ -30,8 +30,8 @@ const atualizar = async (req,res)=>{
             console.error('Falha ao tentar encontrar a compra!',err)
             res.status(404).json({message: "Falha ao tentar encontrar a compra!"})
         } else {
-            await Compra.update(dados, {where: {id : id}})
-            const valoresAtual = await Cliente.findByPk(id)
+            await Compra.update(dados, {where: {id_compra : id}})
+            const valoresAtual = await Compra.findByPk(id)
             res.status(200).json(valoresAtual)
             console.log('Dados da compra atualizados com sucesso!')
         }
@@ -49,7 +49,7 @@ const apagar = async (req,res)=>{
             console.error('Falha ao tentar encontrar a compra!',err)
             res.status(404).json({message: "Falha ao tentar encontrar a compra!"})
         } else {
-            await Compra.destroy({where: {id : id}})
+            await Compra.destroy({where: {id_compra : id}})
             console.log('Compra apagada com sucesso!')
             res.status(200).json({message: "Compra apagada com sucesso!"})
         }

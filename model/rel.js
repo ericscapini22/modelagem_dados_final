@@ -4,23 +4,23 @@ const Compra = require('./Compra')
 
 Usuario.hasMany(Compra, {
     foreignKey: 'id_usuario',
-    as: 'compras',
+    as: 'comprasUser',
     onDelete: 'CASCADE'
 })
 Compra.belongsTo(Usuario, {
     foreignKey: 'id_usuario',
-    as: 'usuarios',
+    as: 'usuariosComp',
     allowNull: false
 })
 
 Produto.hasMany(Compra, {
     foreignKey: 'id_produto',
-    as: 'compras',
+    as: 'comprasProd',
     onDelete: 'CASCADE'
 })
 Compra.belongsTo(Produto, {
     foreignKey: 'id_produto',
-    as: 'produtos',
+    as: 'produtosComp',
     allowNull: false
 })
 
