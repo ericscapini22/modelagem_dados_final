@@ -16,7 +16,7 @@ const Produto = db.define('produto', {
         allowNull: false
     },
     categoria: {
-        type: DataTypes.ENUM(),
+        type: DataTypes.STRING,
         allowNull: false
     },
     preco: {
@@ -24,7 +24,7 @@ const Produto = db.define('produto', {
         allowNull: false
     },
     porcentagemDesconto: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     estoque: {
@@ -43,7 +43,8 @@ const Produto = db.define('produto', {
         }
     }
 },{
-    timestamps: false
+    timestamps: false,
+    tableName: 'produtos'
 })
 
 module.exports = Produto

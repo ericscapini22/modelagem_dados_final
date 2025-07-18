@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize')
 const db = require('../db/conn')
-const Usuario = require('./Usuario')
-const Produto = require('./Produto')
 
 const Compra = db.define('compra', {
     id_compra: {
@@ -13,7 +11,7 @@ const Compra = db.define('compra', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Usuario,
+            model: "usuarios",
             key: 'id_usuario'  
         }
     },
@@ -21,7 +19,7 @@ const Compra = db.define('compra', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Produto,
+            model: "produtos",
             key: 'id_produto'  
         }
     },
@@ -38,7 +36,7 @@ const Compra = db.define('compra', {
         allowNull: false
     },
     descontoAplicado: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     precoFinal: {
@@ -46,15 +44,16 @@ const Compra = db.define('compra', {
         allowNull: false
     },
     formaPagamento: {
-        type: DataTypes.ENUM(),
+        type: DataTypes.STRING,
         allowNull: false
     },
     statusCompra: {
-        type: DataTypes.ENUM(),
+        type: DataTypes.STRING,
         allowNull: false
     }
 },{
-    timestamps: false
+    timestamps: false,
+    tableName: 'compras'
 })
 
 module.exports = Compra

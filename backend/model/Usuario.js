@@ -43,11 +43,12 @@ const Usuario = db.define('usuario', {
         allowNull: false
     },
     dataNascimento: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false
     }
 },{
-    timestamps: false
+    timestamps: false,
+    tableName: 'usuarios'
 })
 
 module.exports = Usuario
