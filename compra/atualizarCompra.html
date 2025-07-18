@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atualizar - Compra</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="atualizarCompra.js" defer></script>
+</head>
+
+<body>
+    <label for="id_compra">ID da Compra:</label>
+    <input type="number" id="id_compra" placeholder="Digite o ID da Compra">
+
+    <label for="id_usuario">ID do Usuário:</label>
+    <input type="number" id="id_usuario" placeholder="Digite o ID do usuário">
+
+    <label for="id_produto">ID do Produto:</label>
+    <input type="number" id="id_produto" placeholder="Digite o ID do produto">
+
+    <label for="quant">Quantidade:</label>
+    <input type="number" id="quant" placeholder="Digite a quantidade comprada">
+
+    <label for="dataCompra">Data da Compra:</label>
+    <input type="date" id="dataCompra">
+
+    <label for="precoUnitario">Preço Unitário (R$):</label>
+    <input type="number" step="0.01" id="precoUnitario" placeholder="Digite o preço unitário">
+
+    <label for="descontoAplicado">Desconto Aplicado (%):</label>
+    <input type="number" id="descontoAplicado" placeholder="Digite o desconto aplicado">
+
+    <label for="precoFinal">Preço Final (R$):</label>
+    <input type="number" step="0.01" id="precoFinal" placeholder="Digite o preço final">
+
+    <label for="formaPagamento">Forma de Pagamento:</label>
+    <input type="text" id="formaPagamento" placeholder="(PIX, Cartão de crédito ou débito e Boleto)">
+
+    <label for="statusCompra">Status da Compra:</label>
+    <input type="text" id="statusCompra" placeholder="(Pendente, Enviado e Entregue)">
+    <br>
+    <button id="btnAtualizar">Atualizar Compra</button>
+
+  <div id="res"></div>
+</body>
+
+</html>
