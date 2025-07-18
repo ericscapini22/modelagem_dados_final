@@ -20,7 +20,7 @@ btnListar.addEventListener('click', () => {
             }
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao listar'
+            console.error('Erro ao listar o produto!')
+            res.innerHTML = 'Erro ao listar o produto!'
         })
 })

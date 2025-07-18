@@ -25,7 +25,7 @@ btnBuscar.addEventListener('click', () => {
 
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao Apagar'
+            console.error('Erro ao listar o produto!')
+            res.innerHTML = 'Erro ao listar o produto!'
         })
 })

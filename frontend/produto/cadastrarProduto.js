@@ -31,6 +31,7 @@ btnCadastrar.addEventListener('click', () => {
     })
         .then(response => response.json())
         .then(valores => {
+            res.innerHTML = "Produto cadastrado com sucesso!<br>"
             res.innerHTML = "nm_produto: "+valores.nm_produto + '<br>'
             res.innerHTML += "descricao: "+valores.descricao + '<br>'
             res.innerHTML += "categoria: "+valores.categoria + '<br>'
@@ -41,7 +42,7 @@ btnCadastrar.addEventListener('click', () => {
             res.innerHTML += "ft_produto: "+valores.ft_produto + '<br>'
         })
         .catch((err) => {
-            console.error('Erro ao cadastrar Usuário!')
-            res.innerHTML = 'Erro ao cadastrar Usuário!'
+            console.error('Erro ao cadastrar o produto!')
+            res.innerHTML = 'Erro ao cadastrar o produto!'
         })
 })

@@ -2,9 +2,9 @@ let btnApagar = document.getElementById('btnApagar')
 let res = document.getElementById('res')
 
 btnApagar.addEventListener('click', () => {
-    let id_produto = Number(document.getElementById('id_produto').value)
+    let id_compra = Number(document.getElementById('id_compra').value)
 
-    fetch('http://localhost:3000/produto/' + id_produto, {
+    fetch('http://localhost:3000/compra/' + id_compra, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -12,10 +12,10 @@ btnApagar.addEventListener('click', () => {
     })
         .then(response => response.json())
         .then(valores => {
-            valores.message
+            res.innerHTML = valores.message
         })
         .catch((err) => {
-            console.error('Erro ao apagar o produto!')
-            res.innerHTML = 'Erro ao apagar o produto!'
+            console.error('Erro ao apagar a Compra!')
+            res.innerHTML = 'Erro ao apagar a Compra!'
         })
 })

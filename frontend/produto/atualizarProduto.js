@@ -32,6 +32,7 @@ btnAtualizar.addEventListener('click', () => {
     })
         .then(response => response.json())
         .then(valores => {
+            res.innerHTML = "Produto atualizado com sucesso!<br><hr><br>"
             res.innerHTML = "nm_produto: "+valores.nm_produto + '<br>'
             res.innerHTML += "descricao: "+valores.descricao + '<br>'
             res.innerHTML += "categoria: "+valores.categoria + '<br>'
@@ -42,7 +43,7 @@ btnAtualizar.addEventListener('click', () => {
             res.innerHTML += "ft_produto: "+valores.ft_produto + '<br>'
         })
         .catch((err) => {
-            console.error('Erro')
-            res.innerHTML = 'erro ao atualizar'
+            console.error('Erro ao atualizar o produto!')
+            res.innerHTML = 'Erro ao atualizar o produto!'
         })
 })

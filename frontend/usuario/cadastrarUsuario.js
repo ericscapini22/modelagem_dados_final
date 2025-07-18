@@ -33,6 +33,7 @@ btnCadastrar.addEventListener('click', () => {
     })
         .then(response => response.json())
         .then(valores => {
+            resCompra.innerHTML = "Usuário cadastrado com sucesso!<br>"
             res.innerHTML = "Nome: "+valores.nm_usuario + '<br>'
             res.innerHTML += "Sobrenome: "+valores.sobrenome + '<br>'
             res.innerHTML += "Idade: "+valores.idade + '<br>'

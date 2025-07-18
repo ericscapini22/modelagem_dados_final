@@ -34,6 +34,7 @@ btnAtualizar.addEventListener('click', () => {
     })
         .then(response => response.json())
         .then(valores => {
+            res.innerHTML = "Usuário atualizado com sucesso!<br><hr><br>"
             res.innerHTML = "Nome: "+valores.nm_usuario + '<br>'
             res.innerHTML += "Sobrenome: "+valores.sobrenome + '<br>'
             res.innerHTML += "Idade: "+valores.idade + '<br>'
